@@ -1,10 +1,9 @@
 import { useState } from "react";
 import styles from "./app.module.css";
-import WebGLElement from "./WebGLElement";
+import { setLightPosX } from "../webgl-demo";
 
 const App = () => {
   const [isLightOn, setIsLightOn] = useState(false);
-  const [lightPosX, setLightPosX] = useState(0.85);
   return (
     <>
       <div className={styles.title}>WebGL Demo</div>
@@ -27,7 +26,7 @@ const App = () => {
           />
         </div>
       </div>
-      <WebGLElement lightPosX={lightPosX} />
+      {/* <WebGLElement lightPosX={lightPosX} /> */}
     </>
   );
 };
