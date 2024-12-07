@@ -45,7 +45,6 @@ const WebGLElement = () => {
 
   useEffect(() => {
     if (gl) {
-      // initilise and do our rendering stuff
       init(gl);
     }
   }, [gl]);
@@ -71,7 +70,6 @@ const WebGLElement = () => {
     // Here's where we call the routine that builds all the
     // objects we'll be drawing.
     setBuffers(initBuffers(gl));
-
     setShaderProgram(initShaderProgram(gl, vsSource, fsSource));
   };
 
