@@ -3,13 +3,13 @@ import {
   drawScene,
   fsSource,
   getProgramInfo,
+  getVSSource,
   initBuffers,
   initShaderProgram,
-  vsSource,
 } from "./webGLUtils";
 import { Buffers, ProgramInfo } from "./webGLTypes";
 
-const WebGLElement = () => {
+const WebGLElement = ({ lightPosX }: { lightPosX: number }) => {
   const ref = useRef<HTMLCanvasElement | null>(null);
   const [gl, setGl] = useState<WebGLRenderingContext | null>(null);
   const [buffers, setBuffers] = useState<Buffers | null>(null);
@@ -22,7 +22,7 @@ const WebGLElement = () => {
 
   // Draw the scene repeatedly
   const render = (now: number) => {
-    now *= 0.001; // convert to seconds
+    now *= 0.0001; // convert to seconds
     deltaTime = now - then;
     then = now;
 
@@ -61,6 +61,12 @@ const WebGLElement = () => {
     }
   }, [gl, programInfo, buffers]);
 
+  useEffect(() => {
+    if (gl) {
+      setShaderProgram(initShaderProgram(gl, getVSSource(lightPosX), fsSource));
+    }
+  }, [lightPosX]);
+
   const init = (gl: WebGLRenderingContext) => {
     // Set clear color to black, fully opaque
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
@@ -70,7 +76,7 @@ const WebGLElement = () => {
     // Here's where we call the routine that builds all the
     // objects we'll be drawing.
     setBuffers(initBuffers(gl));
-    setShaderProgram(initShaderProgram(gl, vsSource, fsSource));
+    setShaderProgram(initShaderProgram(gl, getVSSource(lightPosX), fsSource));
   };
 
   return (

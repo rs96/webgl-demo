@@ -8,8 +8,16 @@
 .controls {
   position: absolute;
   display: flex;
+  flex-direction: column;
   top: 50%;
   right: 5vw;
+  gap: 20px;
+}
+
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .selected {
