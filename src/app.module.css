@@ -1,0 +1,17 @@
+.title {
+  position: absolute;
+  top: 2vh;
+  left: 50%;
+  font-size: 2rem;
+}
+
+.controls {
+  position: absolute;
+  display: flex;
+  top: 50%;
+  right: 5vw;
+}
+
+.selected {
+  border: 1px solid #646cff;
+}
