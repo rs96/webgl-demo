@@ -7,12 +7,29 @@ let rotationSpeeds = {
   z: 1,
 };
 
+// let position: ReadonlyVec3 = [0, 0, 0];
+let posX = 0;
+let posY = 0;
+let posZ = -4;
+
 export const setRotationSpeeds = (speeds: {
   x?: number;
   y?: number;
   z?: number;
 }) => {
   rotationSpeeds = { ...rotationSpeeds, ...speeds };
+};
+
+export const setPosition = (pos: number, dimension: "x" | "y" | "z") => {
+  if (dimension === "x") {
+    posX = pos;
+  }
+  if (dimension === "y") {
+    posY = pos;
+  }
+  if (dimension === "z") {
+    posZ = pos;
+  }
 };
 
 // buffer into the vertexPosition attribute.
@@ -146,8 +163,10 @@ export const drawScene = (
   mat4.translate(
     modelViewMatrix, // destination matrix
     modelViewMatrix, // matrix to translate
-    [-0.0, 0.0, -6.0]
+    [posX, posY, posZ]
   ); // amount to translate
+
+  // console.log([posX, posY, posZ]);
 
   mat4.rotate(
     modelViewMatrix, // destination matrix
