@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styles from "./app.module.css";
-import { setLightPosX } from "../webgl-demo";
 
 const App = () => {
   const [isLightOn, setIsLightOn] = useState(false);
@@ -22,7 +21,7 @@ const App = () => {
             min="0"
             max="1"
             step="0.01"
-            onChange={(event) => setLightPosX(Number(event.target.value))}
+            onChange={() => {}}
           />
         </div>
       </div>
