@@ -1,8 +1,7 @@
-//
-// start here
-
-import { drawScene } from "./draw-scene";
+import { drawScene, setRotationSpeeds } from "./draw-scene";
 import { initBuffers } from "./init-buffers";
+
+export { setRotationSpeeds };
 
 let cubeRotation = 0.0;
 let deltaTime = 0;
@@ -133,7 +132,7 @@ const main = () => {
 
   // Draw the scene repeatedly
   const render = (now: number) => {
-    now *= 0.0005; //0.001; // convert to seconds
+    now *= 0.001; // convert to seconds
     // console.log({ testLightPosX });
     deltaTime = now - then;
     then = now;

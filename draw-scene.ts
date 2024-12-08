@@ -1,5 +1,19 @@
 import { mat4 } from "gl-matrix";
-import { Buffers, ProgramInfo } from "./src/webGLTypes";
+import { Buffers, ProgramInfo } from "./types";
+
+let rotationSpeeds = {
+  x: 1,
+  y: 1,
+  z: 1,
+};
+
+export const setRotationSpeeds = (speeds: {
+  x?: number;
+  y?: number;
+  z?: number;
+}) => {
+  rotationSpeeds = { ...rotationSpeeds, ...speeds };
+};
 
 // buffer into the vertexPosition attribute.
 const setPositionAttribute = (
@@ -138,19 +152,19 @@ export const drawScene = (
   mat4.rotate(
     modelViewMatrix, // destination matrix
     modelViewMatrix, // matrix to rotate
-    cubeRotation, // amount to rotate in radians
+    cubeRotation * rotationSpeeds.z, // amount to rotate in radians
     [0, 0, 1]
   ); // axis to rotate around (Z)
   mat4.rotate(
     modelViewMatrix, // destination matrix
     modelViewMatrix, // matrix to rotate
-    cubeRotation * 0.7, // amount to rotate in radians
+    cubeRotation * rotationSpeeds.y, // amount to rotate in radians
     [0, 1, 0]
   ); // axis to rotate around (Y)
   mat4.rotate(
     modelViewMatrix, // destination matrix
     modelViewMatrix, // matrix to rotate
-    cubeRotation * 0.3, // amount to rotate in radians
+    cubeRotation * rotationSpeeds.x, // amount to rotate in radians
     [1, 0, 0]
   ); // axis to rotate around (X)
 
