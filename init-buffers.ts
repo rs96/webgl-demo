@@ -1,4 +1,4 @@
-import { Buffers } from "./src/webGLTypes";
+import { Buffers } from "./types";
 
 const initIndexBuffer = (gl: WebGLRenderingContext) => {
   const indexBuffer = gl.createBuffer();

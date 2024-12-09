@@ -1,23 +1,23 @@
 import { mat4 } from "gl-matrix";
 import { Buffers, ProgramInfo } from "./types";
 
-let rotationSpeeds = {
-  x: 1,
-  y: 1,
-  z: 1,
-};
-
-// let position: ReadonlyVec3 = [0, 0, 0];
 let posX = 0;
 let posY = 0;
 let posZ = -4;
+let rotX = 0;
+let rotY = 0;
+let rotZ = -4;
 
-export const setRotationSpeeds = (speeds: {
-  x?: number;
-  y?: number;
-  z?: number;
-}) => {
-  rotationSpeeds = { ...rotationSpeeds, ...speeds };
+export const setRotation = (rot: number, dimension: "x" | "y" | "z") => {
+  if (dimension === "x") {
+    rotX = rot;
+  }
+  if (dimension === "y") {
+    rotY = rot;
+  }
+  if (dimension === "z") {
+    rotZ = rot;
+  }
 };
 
 export const setPosition = (pos: number, dimension: "x" | "y" | "z") => {
@@ -171,19 +171,19 @@ export const drawScene = (
   mat4.rotate(
     modelViewMatrix, // destination matrix
     modelViewMatrix, // matrix to rotate
-    cubeRotation * rotationSpeeds.z, // amount to rotate in radians
+    cubeRotation * rotZ, // amount to rotate in radians
     [0, 0, 1]
   ); // axis to rotate around (Z)
   mat4.rotate(
     modelViewMatrix, // destination matrix
     modelViewMatrix, // matrix to rotate
-    cubeRotation * rotationSpeeds.y, // amount to rotate in radians
+    cubeRotation * rotY, // amount to rotate in radians
     [0, 1, 0]
   ); // axis to rotate around (Y)
   mat4.rotate(
     modelViewMatrix, // destination matrix
     modelViewMatrix, // matrix to rotate
-    cubeRotation * rotationSpeeds.x, // amount to rotate in radians
+    cubeRotation * rotX, // amount to rotate in radians
     [1, 0, 0]
   ); // axis to rotate around (X)
 

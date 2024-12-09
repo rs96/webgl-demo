@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./app.module.css";
-import { setPosition, setRotationSpeeds } from "../webgl-demo";
+import { setPosition, setRotation } from "../webgl-demo";
 
 const App = () => {
   const [isLightOn, setIsLightOn] = useState(false);
@@ -21,9 +21,7 @@ const App = () => {
             min="0"
             max="1"
             step="0.02"
-            onChange={(event) =>
-              setRotationSpeeds({ x: Number(event?.target.value) })
-            }
+            onChange={(event) => setRotation(Number(event.target.value), "x")}
           />
           <label>Y Rotation Speed</label>
           <input
@@ -31,9 +29,7 @@ const App = () => {
             min="0"
             max="1"
             step="0.02"
-            onChange={(event) =>
-              setRotationSpeeds({ y: Number(event?.target.value) })
-            }
+            onChange={(event) => setRotation(Number(event.target.value), "y")}
           />
           <label>Z Rotation Speed</label>
           <input
@@ -41,9 +37,7 @@ const App = () => {
             min="0"
             max="1"
             step="0.02"
-            onChange={(event) =>
-              setRotationSpeeds({ z: Number(event?.target.value) })
-            }
+            onChange={(event) => setRotation(Number(event.target.value), "z")}
           />
         </div>
         <div className={styles.sliderGroup}>
