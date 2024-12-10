@@ -3,10 +3,12 @@ import { Buffers, ProgramInfo } from "./types";
 
 let posX = 0;
 let posY = 0;
-let posZ = -4;
-let rotX = 0;
-let rotY = 0;
-let rotZ = -4;
+let posZ = -9;
+let rotX = 0.5;
+let rotY = 0.5;
+let rotZ = 0.5;
+
+export { posX, posY, posZ, rotX, rotY, rotZ };
 
 export const setRotation = (rot: number, dimension: "x" | "y" | "z") => {
   if (dimension === "x") {

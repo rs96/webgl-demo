@@ -1,7 +1,17 @@
-import { drawScene, setRotation, setPosition } from "./draw-scene";
+import {
+  drawScene,
+  setRotation,
+  setPosition,
+  posX,
+  posY,
+  posZ,
+  rotX,
+  rotY,
+  rotZ,
+} from "./draw-scene";
 import { initBuffers } from "./init-buffers";
 
-export { setRotation, setPosition };
+export { setRotation, setPosition, posX, posY, posZ, rotX, rotY, rotZ };
 
 let cubeRotation = 0.0;
 let deltaTime = 0;
